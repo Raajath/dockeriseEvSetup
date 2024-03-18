@@ -1,0 +1,15 @@
+name: Run Setup Script
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run_setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Execute setup script
+        run: bash dockerise.sh
