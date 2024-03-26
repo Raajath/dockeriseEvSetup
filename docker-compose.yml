@@ -1,0 +1,58 @@
+version: "3"
+
+services:
+  mongo1:
+    container_name: mongo1
+    image: mongo:latest
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: rsAdmin
+      MONGO_INITDB_ROOT_PASSWORD: raj123
+    volumes:
+      - mongo1:/data/db 
+      - ./mongo-keyfile/keyfile:/keyfile:rw
+    networks:
+      - asset_network
+    command: >
+      bash -c "chmod 400 /keyfile && chown mongodb:mongodb /keyfile && mongod --bind_ip_all --replSet mongoReplica --port 27017 --keyFile /keyfile"
+
+  mongo2:
+    container_name: mongo2
+    image: mongo:latest
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: rsAdmin
+      MONGO_INITDB_ROOT_PASSWORD: raj123
+    volumes:
+      - mongo2:/data/db 
+      - ./mongo-keyfile/keyfile:/keyfile:rw
+    networks:
+      - asset_network
+    command: >
+      bash -c "chmod 400 /keyfile && chown mongodb:mongodb /keyfile && mongod --bind_ip_all --replSet mongoReplica --port 27017 --keyFile /keyfile"
+
+
+  mongo3:
+    container_name: mongo3
+    image: mongo:latest
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: rsAdmin
+      MONGO_INITDB_ROOT_PASSWORD: raj123
+    volumes:
+      - mongo3:/data/db
+      - ./mongo-keyfile/keyfile:/keyfile:rw
+    networks:
+      - asset_network
+    command: >
+      bash -c "chmod 400 /keyfile && chown mongodb:mongodb /keyfile && mongod --bind_ip_all --replSet mongoReplica --port 27017 --keyFile /keyfile"
+
+
+networks:
+  asset_network:
+    driver: bridge
+
+volumes:
+  mongo1: {}
+  mongo2: {}
+  mongo3: {}
