@@ -1,5 +1,6 @@
 mkdir mongo-keyfile
 chmod 755 mongo-keyfile
+chmod 755 setup.sh
 openssl rand -base64 756 > mongo-keyfile/keyfile
 docker-compose up -d --build
 
