@@ -21,7 +21,7 @@ mongosh <<EOF
     rs.initiate(config, { force: true });
     rs.status();
 EOF
-sleep 10
+sleep 15
 
 mongosh <<EOF
    use admin;

@@ -4,7 +4,7 @@ chmod 755 setup.sh
 openssl rand -base64 756 > mongo-keyfile/keyfile
 docker-compose up -d --build
 
-sleep 15
+sleep 20
 docker exec mongo3 ./scripts/setup.sh
 
 git clone https://github.com/Raajath/chargingInfrastructure
