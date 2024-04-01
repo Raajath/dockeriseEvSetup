@@ -11,5 +11,5 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Execute setup script
+      - name: Execute dockerise script
         run: bash dockerise.sh
